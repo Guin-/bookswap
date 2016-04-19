@@ -5,8 +5,8 @@ from django.db import models
 from bookswap.users.models import User
 
 class Book(models.Model):
-    owner = models.ForeignKey(User)
-    ISBN = models.IntegerField(blank=True, null=True)
+    owner = models.ForeignKey(User, related_name='books', null=True)
+    ISBN = models.CharField(max_length=13, blank=True, null=True)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     requested = models.BooleanField()
